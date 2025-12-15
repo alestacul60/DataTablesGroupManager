@@ -1,4 +1,22 @@
+
+/*!
+* DataTables Group Manager
+* ---------------------------------------
+* Adds a visual and dynamic group manager
+* for DataTables RowGroup extension.
+*
+* Author: Alejandro Stacul
+* License: MIT
+* Repository: https://github.com//datatables-group-manager
+*
+* This plugin solves a common limitation of
+ * DataTables RowGroup: it does not provide
+ * a native UI to dynamically select, order
+ * or persist grouped columns.
+*/
+
 // dataTables-groupManager.js - Versión corregida para manejar null
+
 (function($) {
     'use strict';
 

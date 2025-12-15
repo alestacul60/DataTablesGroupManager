@@ -29,11 +29,6 @@ Este plugin extiende RowGroup agregando:
 
 ---
 
-### 🧠 En resumen
-
-**DataTables Group Manager convierte RowGroup en una funcionalidad interactiva**, usable por usuarios finales, sin lógica custom ni reinicialización de la tabla.
-
----
 
 ## ✨ Características
 
@@ -50,7 +45,6 @@ Este plugin extiende RowGroup agregando:
 - **jQuery** `>= 3.x`
 - **DataTables** `>= 1.11`
 - **DataTables RowGroup Extension**
-- Navegador con soporte para `localStorage`
 
 ---
 
