@@ -82,117 +82,168 @@
             function addStyles() {
                 if ($('#dt-group-manager-styles').length) return;
                 
-                const styles = `
-                    .dt-group-manager-container {
-                        background: #f8f9fa;
-                        border: 1px solid #dee2e6;
-                        border-radius: 8px;
-                        padding: 15px;
-                        margin-bottom: 20px;
-                    }
-                    
-                    .dt-group-header {
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        margin-bottom: 15px;
-                        padding-bottom: 10px;
-                        border-bottom: 1px solid #dee2e6;
-                    }
-                    
-                    .dt-group-title {
-                        font-size: 16px;
-                        font-weight: 600;
-                        color: #495057;
-                    }
-                    
-                    .dt-group-controls {
-                        display: flex;
-                        align-items: center;
-                        gap: 10px;
-                    }
-                    
-                    .dt-group-count {
-                        background: #6c757d;
-                        color: white;
-                        padding: 4px 12px;
-                        border-radius: 20px;
-                        font-size: 13px;
-                        font-weight: bold;
-                    }
-                    
-                    .dt-group-clear-btn {
-                        background: #dc3545;
-                        color: white;
-                        border: none;
-                        padding: 6px 12px;
-                        border-radius: 4px;
-                        font-size: 13px;
-                        cursor: pointer;
-                    }
-                    
-                    .dt-group-clear-btn:disabled {
-                        background: #adb5bd;
-                        cursor: not-allowed;
-                    }
-                    
-                    .dt-group-columns-container {
-                        display: flex;
-                        flex-wrap: wrap;
-                        gap: 8px;
-                        margin-bottom: 10px;
-                        max-height: 200px;
-                        overflow-y: auto;
-                        padding: 5px;
-                    }
-                    
-                    .dt-group-column-btn {
-                        background: white;
-                        border: 1px solid #dee2e6;
-                        border-radius: 4px;
-                        padding: 6px 12px;
-                        font-size: 13px;
-                        cursor: pointer;
-                        display: flex;
-                        align-items: center;
-                        gap: 6px;
-                        transition: all 0.2s;
-                    }
-                    
-                    .dt-group-column-btn:hover {
-                        border-color: #adb5bd;
-                    }
-                    
-                    .dt-group-column-btn.active {
-                        background: #d1e7dd;
-                        border-color: #badbcc;
-                        color: #0f5132;
-                        font-weight: 500;
-                    }
-                    
-                    .dt-group-column-btn .btn-icon {
-                        font-size: 14px;
-                    }
-                    
-                    .dt-group-column-btn.active .btn-icon {
-                        color: #198754;
-                    }
-                    
-                    .dt-group-status {
-                        font-size: 13px;
-                        color: #6c757d;
-                        margin-top: 10px;
-                        padding-top: 10px;
-                        border-top: 1px solid #dee2e6;
-                    }
-                    
-                    .dt-group-order {
-                        font-size: 11px;
-                        color: #6c757d;
-                        margin-left: 5px;
-                    }
-                `;
-                
+              const styles = `
+    .dt-group-manager-container {
+        background: transparent;
+        padding: 8px 0;
+        margin-bottom: 12px;
+    }
+    
+    .dt-group-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 8px;
+        padding-bottom: 6px;
+        border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    
+    .dt-group-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #2c3e50;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .dt-group-title::before {
+        content: "▸";
+        font-size: 11px;
+        color: #5d6d7e;
+    }
+    
+    .dt-group-controls {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+    }
+    
+    .dt-group-count {
+        background: rgba(0, 0, 0, 0.05);
+        color: #5d6d7e;
+        padding: 2px 8px;
+        border-radius: 10px;
+        font-size: 11px;
+        font-weight: 500;
+    }
+    
+    .dt-group-clear-btn {
+        background: transparent;
+        color: #e74c3c;
+        border: 1px solid rgba(231, 76, 60, 0.3);
+        padding: 3px 8px;
+        border-radius: 3px;
+        font-size: 11px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.15s;
+    }
+    
+    .dt-group-clear-btn:hover:not(:disabled) {
+        background: rgba(231, 76, 60, 0.05);
+        border-color: rgba(231, 76, 60, 0.5);
+    }
+    
+    .dt-group-clear-btn:disabled {
+        background: transparent;
+        color: rgba(0, 0, 0, 0.25);
+        border-color: rgba(0, 0, 0, 0.15);
+        cursor: not-allowed;
+    }
+    
+    .dt-group-columns-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 6px;
+        max-height: 120px;
+        overflow-y: auto;
+        padding: 2px;
+    }
+    
+    .dt-group-columns-container::-webkit-scrollbar {
+        width: 4px;
+    }
+    
+    .dt-group-columns-container::-webkit-scrollbar-track {
+        background: rgba(0, 0, 0, 0.03);
+    }
+    
+    .dt-group-columns-container::-webkit-scrollbar-thumb {
+        background: rgba(0, 0, 0, 0.1);
+        border-radius: 2px;
+    }
+    
+    .dt-group-column-btn {
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(0, 0, 0, 0.12);
+        border-radius: 4px;
+        padding: 4px 8px;
+        font-size: 12px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        transition: all 0.15s;
+        color: #34495e;
+        font-weight: 400;
+    }
+    
+    .dt-group-column-btn:hover {
+        background: rgba(255, 255, 255, 1);
+        border-color: rgba(0, 0, 0, 0.2);
+    }
+    
+    .dt-group-column-btn.active {
+        background: rgba(52, 152, 219, 0.1);
+        border-color: rgba(52, 152, 219, 0.4);
+        color: #2980b9;
+        font-weight: 500;
+    }
+    
+    .dt-group-column-btn .btn-icon {
+        font-size: 11px;
+    }
+    
+    .dt-group-column-btn.active .btn-icon {
+        color: #2980b9;
+    }
+    
+    .dt-group-column-btn.active::before {
+        content: "✓";
+        font-size: 10px;
+        margin-right: 2px;
+        color: #27ae60;
+    }
+    
+    .dt-group-status {
+        font-size: 11px;
+        color: #7f8c8d;
+        margin-top: 6px;
+        padding-top: 6px;
+        border-top: 1px solid rgba(0, 0, 0, 0.08);
+        font-weight: 400;
+        min-height: 16px;
+        line-height: 1.3;
+    }
+    
+    .dt-group-order {
+        background: rgba(52, 152, 219, 0.1);
+        padding: 1px 4px;
+        border-radius: 2px;
+        font-size: 9px;
+        color: #2980b9;
+        margin-left: 4px;
+        font-weight: 500;
+    }
+
+    .dt-group-status:empty::before {
+        content: "Drag columns here";
+        opacity: 0.5;
+        font-style: normal;
+    }
+`;   
                 $('<style id="dt-group-manager-styles">' + styles + '</style>').appendTo('head');
             }
             
@@ -221,14 +272,10 @@
                         <div class="dt-group-columns-container" id="dt-group-columns-${tableId}">
                             <!-- Columnas se cargarán aquí -->
                         </div>
-                        <div class="dt-group-status" id="dt-group-status-${tableId}">
-                            No hay columnas agrupadas
-                        </div>
                     </div>
                 `;
                 
                 $container.prepend(uiHtml);
-                
                 // Evento para limpiar
                 $(`#dt-group-manager-${tableId} .dt-group-clear-btn`).on('click', function() {
                     if (groups.length > 0 && confirm('¿Eliminar todas las agrupaciones?')) {
@@ -377,6 +424,13 @@
                 saveState();
                 updateUI();
             }
+
+            function updateColumnVisibility() {
+                table.columns().every(function(index) {
+                    const shouldHide = groups.includes(index);
+                    this.visible(!shouldHide, false); // false = sin redraw inmediato
+                });
+            }
             
             function applyGroups() {
                 log('Aplicando grupos. Índices:', groups);
@@ -423,6 +477,7 @@
                         log('rowGroup deshabilitado');
                     }
                     
+                    updateColumnVisibility();
                     // Redibujar la tabla
                     setTimeout(() => {
                         table.draw(false);
