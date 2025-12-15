@@ -7,7 +7,7 @@
 *
 * Author: Alejandro Stacul
 * License: MIT
-* Repository: https://github.com//datatables-group-manager
+* Repository: https://github.com/alestacul60/DataTablesGroupManager
 *
 * This plugin solves a common limitation of
  * DataTables RowGroup: it does not provide
